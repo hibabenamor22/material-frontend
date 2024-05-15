@@ -40,6 +40,7 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
       }}
       {...other}
     >
+       <img src="https://media.istockphoto.com/id/1257355596/vector/business-protection-icon.jpg?s=612x612&w=0&k=20&c=BB3YxL3LRNRyGNy61gzvA7hvcrgFnn012m19SI84jqE=" alt="Logo" style={{width: '100%', height: '100%'}} />
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
         <defs>
           <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">

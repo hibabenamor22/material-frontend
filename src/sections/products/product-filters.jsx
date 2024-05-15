@@ -20,6 +20,7 @@ import { ColorPicker } from 'src/components/color-utils';
 
 // ----------------------------------------------------------------------
 
+
 export const SORT_OPTIONS = [
   { value: 'featured', label: 'Featured' },
   { value: 'newest', label: 'Newest' },
@@ -27,13 +28,9 @@ export const SORT_OPTIONS = [
   { value: 'priceAsc', label: 'Price: Low-High' },
 ];
 export const GENDER_OPTIONS = ['Men', 'Women', 'Kids'];
-export const CATEGORY_OPTIONS = ['All', 'Shose', 'Apparel', 'Accessories'];
+export const CATEGORY_OPTIONS = ['All', 'Scanning Tools', 'Vulnerability Scanners', 'Exploit Tools',];
 export const RATING_OPTIONS = ['up4Star', 'up3Star', 'up2Star', 'up1Star'];
-export const PRICE_OPTIONS = [
-  { value: 'below', label: 'Below $25' },
-  { value: 'between', label: 'Between $25 - $75' },
-  { value: 'above', label: 'Above $75' },
-];
+
 export const COLOR_OPTIONS = [
   '#00AB55',
   '#000000',
@@ -58,17 +55,21 @@ export default function ProductFilters({ openFilter, onOpenFilter, onCloseFilter
       </FormGroup>
     </Stack>
   );
+  
+
+  
 
   const renderCategory = (
     <Stack spacing={1}>
       <Typography variant="subtitle2">Category</Typography>
-      <RadioGroup>
+  
         {CATEGORY_OPTIONS.map((item) => (
           <FormControlLabel key={item} value={item} control={<Radio />} label={item} />
         ))}
-      </RadioGroup>
+
     </Stack>
   );
+  
 
   const renderColors = (
     <Stack spacing={1}>
@@ -83,21 +84,7 @@ export default function ProductFilters({ openFilter, onOpenFilter, onCloseFilter
     </Stack>
   );
 
-  const renderPrice = (
-    <Stack spacing={1}>
-      <Typography variant="subtitle2">Price</Typography>
-      <RadioGroup>
-        {PRICE_OPTIONS.map((item) => (
-          <FormControlLabel
-            key={item.value}
-            value={item.value}
-            control={<Radio />}
-            label={item.label}
-          />
-        ))}
-      </RadioGroup>
-    </Stack>
-  );
+  
 
   const renderRating = (
     <Stack spacing={1}>
@@ -172,8 +159,6 @@ export default function ProductFilters({ openFilter, onOpenFilter, onCloseFilter
             {renderCategory}
 
             {renderColors}
-
-            {renderPrice}
 
             {renderRating}
           </Stack>
