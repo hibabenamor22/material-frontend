@@ -9,15 +9,30 @@ import { alpha } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
+import { useRouter } from 'src/routes/hooks';
+
 import { fDate } from 'src/utils/format-time';
 import { fShortenNumber } from 'src/utils/format-number';
 
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 
+
 // ----------------------------------------------------------------------
 
+
+
+const postPaths = {
+  'Protecting Your Assets: The Importance of Penetration Testing in Cybersecurity': '/blog1',
+  '20 Cybersecurity Tips and Best Practices for Your Business': '/blog2',
+  'What are The Most Common Cyber Attacks?' :'/blog3',
+  'What is Cryptography?' :'/blog4',
+  'Ways to avoid social engineering attacks' :'/blog5',
+  'Ways to avoid social engineering attacks' :'/blog6',
+};
+
 export default function PostCard({ post, index }) {
+  const router = useRouter();
   const { cover, title, view, comment, share, author, createdAt } = post;
 
   const latestPostLarge = index === 0;
@@ -47,25 +62,40 @@ export default function PostCard({ post, index }) {
   );
 
   const renderTitle = (
-    <Link
-      color="inherit"
-      variant="subtitle2"
-      underline="hover"
-      sx={{
-        height: 44,
-        overflow: 'hidden',
-        WebkitLineClamp: 2,
-        display: '-webkit-box',
-        WebkitBoxOrient: 'vertical',
-        ...(latestPostLarge && { typography: 'h5', height: 60 }),
-        ...((latestPostLarge || latestPost) && {
-          color: 'common.white',
-        }),
+    <button
+      type="button"
+      onClick={() => {
+        // Use the post's path to navigate
+        const path = postPaths[post.title];
+        router.push(path);
+      }}
+      style={{
+        background: 'transparent',
+        border: 'none',
+        outline: 'none',
       }}
     >
-      {title}
-    </Link>
+      <Link
+        color="inherit"
+        variant="subtitle2"
+        underline="hover"
+        sx={{
+          height: 44,
+          overflow: 'hidden',
+          WebkitLineClamp: 2,
+          display: '-webkit-box',
+          WebkitBoxOrient: 'vertical',
+          ...(latestPostLarge && { typography: 'h5', height: 60 }),
+          ...((latestPostLarge || latestPost) && {
+            color: 'common.white',
+          }),
+        }}
+      >
+        {title}
+      </Link>
+    </button>
   );
+  
 
   const renderInfo = (
     <Stack
